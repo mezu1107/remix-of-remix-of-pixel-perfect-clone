@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      about_blocks: {
+        Row: {
+          body: string | null
+          created_at: string
+          eyebrow: string | null
+          id: string
+          image_url: string | null
+          items: string[]
+          layout: string
+          published: boolean
+          section_key: string
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          eyebrow?: string | null
+          id?: string
+          image_url?: string | null
+          items?: string[]
+          layout?: string
+          published?: boolean
+          section_key: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          eyebrow?: string | null
+          id?: string
+          image_url?: string | null
+          items?: string[]
+          layout?: string
+          published?: boolean
+          section_key?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       analytics_events: {
         Row: {
           created_at: string
@@ -41,6 +86,39 @@ export type Database = {
           path?: string
           referrer?: string | null
           session_id?: string | null
+        }
+        Relationships: []
+      }
+      badges: {
+        Row: {
+          created_at: string
+          icon: string
+          id: string
+          label: string
+          published: boolean
+          sort_order: number
+          sublabel: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          icon?: string
+          id?: string
+          label: string
+          published?: boolean
+          sort_order?: number
+          sublabel?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          icon?: string
+          id?: string
+          label?: string
+          published?: boolean
+          sort_order?: number
+          sublabel?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -1342,14 +1420,7 @@ export type Database = {
           featured: boolean
           features: string[]
           gradient: string
-          hero_eyebrow: string | null
-          hero_headline: string | null
           hero_image: string | null
-          hero_media_type: string
-          hero_media_url: string | null
-          hero_stat_label: string | null
-          hero_status: string | null
-          hero_subheadline: string | null
           icon: string
           id: string
           long_description: string | null
@@ -1376,14 +1447,7 @@ export type Database = {
           featured?: boolean
           features?: string[]
           gradient?: string
-          hero_eyebrow?: string | null
-          hero_headline?: string | null
           hero_image?: string | null
-          hero_media_type?: string
-          hero_media_url?: string | null
-          hero_stat_label?: string | null
-          hero_status?: string | null
-          hero_subheadline?: string | null
           icon?: string
           id?: string
           long_description?: string | null
@@ -1410,14 +1474,7 @@ export type Database = {
           featured?: boolean
           features?: string[]
           gradient?: string
-          hero_eyebrow?: string | null
-          hero_headline?: string | null
           hero_image?: string | null
-          hero_media_type?: string
-          hero_media_url?: string | null
-          hero_stat_label?: string | null
-          hero_status?: string | null
-          hero_subheadline?: string | null
           icon?: string
           id?: string
           long_description?: string | null
@@ -1482,286 +1539,6 @@ export type Database = {
           url?: string
         }
         Relationships: []
-      }
-      staff_activities: {
-        Row: {
-          action: string
-          actor: string
-          created_at: string
-          description: string | null
-          id: string
-          staff_id: string
-        }
-        Insert: {
-          action: string
-          actor?: string
-          created_at?: string
-          description?: string | null
-          id?: string
-          staff_id: string
-        }
-        Update: {
-          action?: string
-          actor?: string
-          created_at?: string
-          description?: string | null
-          id?: string
-          staff_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "staff_activities_staff_id_fkey"
-            columns: ["staff_id"]
-            isOneToOne: false
-            referencedRelation: "staff_members"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      staff_documents: {
-        Row: {
-          created_at: string
-          description: string | null
-          file_type: string | null
-          id: string
-          name: string
-          staff_id: string
-          updated_at: string
-          url: string
-        }
-        Insert: {
-          created_at?: string
-          description?: string | null
-          file_type?: string | null
-          id?: string
-          name: string
-          staff_id: string
-          updated_at?: string
-          url: string
-        }
-        Update: {
-          created_at?: string
-          description?: string | null
-          file_type?: string | null
-          id?: string
-          name?: string
-          staff_id?: string
-          updated_at?: string
-          url?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "staff_documents_staff_id_fkey"
-            columns: ["staff_id"]
-            isOneToOne: false
-            referencedRelation: "staff_members"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      staff_members: {
-        Row: {
-          active: boolean
-          avatar_url: string | null
-          created_at: string
-          department: string | null
-          email: string
-          id: string
-          job_title: string | null
-          modules: string[]
-          name: string
-          phone: string | null
-          role: string
-          team_member_id: string | null
-          updated_at: string
-          user_id: string | null
-        }
-        Insert: {
-          active?: boolean
-          avatar_url?: string | null
-          created_at?: string
-          department?: string | null
-          email: string
-          id?: string
-          job_title?: string | null
-          modules?: string[]
-          name: string
-          phone?: string | null
-          role?: string
-          team_member_id?: string | null
-          updated_at?: string
-          user_id?: string | null
-        }
-        Update: {
-          active?: boolean
-          avatar_url?: string | null
-          created_at?: string
-          department?: string | null
-          email?: string
-          id?: string
-          job_title?: string | null
-          modules?: string[]
-          name?: string
-          phone?: string | null
-          role?: string
-          team_member_id?: string | null
-          updated_at?: string
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "staff_members_team_member_id_fkey"
-            columns: ["team_member_id"]
-            isOneToOne: false
-            referencedRelation: "team_members"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      staff_messages: {
-        Row: {
-          body: string
-          created_at: string
-          id: string
-          important: boolean
-          is_read: boolean
-          sender: string
-          staff_id: string
-          subject: string
-          updated_at: string
-        }
-        Insert: {
-          body: string
-          created_at?: string
-          id?: string
-          important?: boolean
-          is_read?: boolean
-          sender?: string
-          staff_id: string
-          subject: string
-          updated_at?: string
-        }
-        Update: {
-          body?: string
-          created_at?: string
-          id?: string
-          important?: boolean
-          is_read?: boolean
-          sender?: string
-          staff_id?: string
-          subject?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "staff_messages_staff_id_fkey"
-            columns: ["staff_id"]
-            isOneToOne: false
-            referencedRelation: "staff_members"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      staff_notifications: {
-        Row: {
-          body: string | null
-          created_at: string
-          id: string
-          is_read: boolean
-          kind: string
-          link: string | null
-          staff_id: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          body?: string | null
-          created_at?: string
-          id?: string
-          is_read?: boolean
-          kind?: string
-          link?: string | null
-          staff_id: string
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          body?: string | null
-          created_at?: string
-          id?: string
-          is_read?: boolean
-          kind?: string
-          link?: string | null
-          staff_id?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "staff_notifications_staff_id_fkey"
-            columns: ["staff_id"]
-            isOneToOne: false
-            referencedRelation: "staff_members"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      staff_tasks: {
-        Row: {
-          created_at: string
-          description: string | null
-          due_date: string | null
-          id: string
-          priority: string
-          progress: number
-          project_id: string | null
-          staff_id: string
-          status: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          description?: string | null
-          due_date?: string | null
-          id?: string
-          priority?: string
-          progress?: number
-          project_id?: string | null
-          staff_id: string
-          status?: string
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          description?: string | null
-          due_date?: string | null
-          id?: string
-          priority?: string
-          progress?: number
-          project_id?: string | null
-          staff_id?: string
-          status?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "staff_tasks_project_id_fkey"
-            columns: ["project_id"]
-            isOneToOne: false
-            referencedRelation: "projects"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "staff_tasks_staff_id_fkey"
-            columns: ["staff_id"]
-            isOneToOne: false
-            referencedRelation: "staff_members"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       stats: {
         Row: {
@@ -1839,43 +1616,64 @@ export type Database = {
       }
       team_members: {
         Row: {
+          achievements: string[]
           bio: string
           created_at: string
           email: string | null
+          experience: string | null
+          expertise: string[]
           id: string
           linkedin_url: string | null
+          location: string | null
+          long_bio: string | null
           name: string
+          phone: string | null
           photo_url: string | null
           published: boolean
           role_title: string
+          slug: string | null
           sort_order: number
           twitter_url: string | null
           updated_at: string
         }
         Insert: {
+          achievements?: string[]
           bio?: string
           created_at?: string
           email?: string | null
+          experience?: string | null
+          expertise?: string[]
           id?: string
           linkedin_url?: string | null
+          location?: string | null
+          long_bio?: string | null
           name: string
+          phone?: string | null
           photo_url?: string | null
           published?: boolean
           role_title?: string
+          slug?: string | null
           sort_order?: number
           twitter_url?: string | null
           updated_at?: string
         }
         Update: {
+          achievements?: string[]
           bio?: string
           created_at?: string
           email?: string | null
+          experience?: string | null
+          expertise?: string[]
           id?: string
           linkedin_url?: string | null
+          location?: string | null
+          long_bio?: string | null
           name?: string
+          phone?: string | null
           photo_url?: string | null
           published?: boolean
           role_title?: string
+          slug?: string | null
           sort_order?: number
           twitter_url?: string | null
           updated_at?: string
@@ -1997,7 +1795,6 @@ export type Database = {
         Returns: boolean
       }
       is_my_client: { Args: { _client_id: string }; Returns: boolean }
-      is_my_staff: { Args: { _staff_id: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "user"
